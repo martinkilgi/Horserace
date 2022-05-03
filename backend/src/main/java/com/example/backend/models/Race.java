@@ -23,5 +23,6 @@ public class Race {
 
     private String location;
     private String time;
+    private boolean finished;
 
 }

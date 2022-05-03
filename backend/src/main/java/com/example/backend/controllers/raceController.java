@@ -1,8 +1,10 @@
 package com.example.backend.controllers;
 
 import com.example.backend.models.Horse;
+import com.example.backend.models.HorseResult;
 import com.example.backend.models.Race;
 import com.example.backend.models.RaceResult;
+import com.example.backend.repositories.RaceRepository;
 import com.example.backend.repositories.RaceResultRepository;
 import com.example.backend.services.RaceService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -22,6 +25,7 @@ import java.util.List;
 public class raceController {
 
     private final RaceService raceService;
+    private final RaceRepository raceRepository;
 
     @GetMapping("/races")
     public List<Race> getRaces() {
@@ -38,6 +42,24 @@ public class raceController {
         return raceService.getRace(id);
     }
 
+    @GetMapping("/horseresults")
+    public List<HorseResult> getHorseResults() {
+        return raceService.getHorseResults();
+    }
+
+    @PutMapping("/race/update")
+    public ResponseEntity<Race> updateRace(@RequestBody Race race) {
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/race/save").toUriString());
+
+        Optional<Race> optionalRace = raceRepository.findById(race.getId());
+
+        Race currRace = optionalRace.get();
+
+        currRace.setFinished(true);
+
+        return ResponseEntity.created(uri).body(raceService.saveRace(currRace));
+    }
+
     @PostMapping("/race/save")
     public ResponseEntity<Race> saveRace(@RequestBody Race race) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/race/save").toUriString());
@@ -52,7 +74,7 @@ public class raceController {
         return ResponseEntity.created(uri).body(raceService.saveHorse(horse));
     }
 
-    @PostMapping("/horse/alter")
+    @PutMapping("/horse/alter")
     public ResponseEntity<List<Horse>> alterHorses(@RequestBody List<Horse> horses) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/horse/alter").toUriString());
 
@@ -70,6 +92,19 @@ public class raceController {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/raceresult/save").toUriString());
 
         return ResponseEntity.created(uri).body(raceService.saveRaceResult(raceResult));
+    }
+
+    @PostMapping("/horseresult/save")
+    public ResponseEntity<List<HorseResult>> saveHorseResult(@RequestBody List<HorseResult> horseResults) {
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/horseresult/save").toUriString());
+
+        return ResponseEntity.created(uri).body(raceService.saveHorseResult(horseResults));
+    }
+
+    @DeleteMapping("/race/delete/{raceId}")
+    public List<Race> deleteRace(@PathVariable Long raceId) {
+        raceService.deleteRace(raceId);
+        return raceService.getRaces();
     }
 
 

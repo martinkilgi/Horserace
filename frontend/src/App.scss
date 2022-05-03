@@ -6,32 +6,44 @@ html {
 
 .App {
   text-align: center;
+
+  a {
+    background-color: $green;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    color: $crayola;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-size: large;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  button {
+    background-color: $crayola;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    color: $darkgreen;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-size: large;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
 
 input {
   display: block;
   text-align: center;
-  border: 2px solid $darkgreen;
+  border: 2px solid $crayola;
   border-radius: 1em;
   background-color: grey;
 
   &:focus {
-      background-color: $crayola;
+      background-color: $mantis;
       outline: none;
       box-shadow: 0 0 10px $green;
   }
-}
-
-button, a {
-  background-color: $green;
-  border: 2px solid $mantis;
-  border-radius: 1em;
-  color: $crayola;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  font-size: large;
-  font-weight: 800;
-  cursor: pointer;
-  text-decoration: none;
 }
 
 .App-logo {

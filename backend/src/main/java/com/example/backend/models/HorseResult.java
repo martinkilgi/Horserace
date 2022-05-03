@@ -7,28 +7,26 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Horse {
+public class HorseResult {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "horse_id")
     private Long id;
 
-    private String name;
-    private String color;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "race_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Race race;
-    private String runTime;
+    @JoinColumn(name = "horse_id")
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
+    private Horse horse;
+
+    private float runTime;
     private boolean betOn;
     private boolean winner;
-
 }
