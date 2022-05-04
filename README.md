@@ -1,5 +1,7 @@
 # Horserace
 
+Simple web application where you can create a horse race, add horses to it, bet on one horse and see if you won your bet.
+
 ## Local setup instructions
 
   * Node.js installed
