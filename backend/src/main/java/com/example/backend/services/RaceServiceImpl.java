@@ -81,7 +81,13 @@ public class RaceServiceImpl implements RaceService {
     @Override
     public RaceResult saveRaceResult(RaceResult raceResult) {
 
-        return raceResultRepository.save(raceResult);
+        // Prevents raceresult from saving twice when refreshing the page
+
+        if (raceResultRepository.findByRace(raceResult.getRace()) != null) {
+            return raceResult;
+        } else {
+            return raceResultRepository.save(raceResult);
+        }
     }
 
     @Override

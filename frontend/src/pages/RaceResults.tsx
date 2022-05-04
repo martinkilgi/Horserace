@@ -104,16 +104,17 @@ const RaceResults: React.FC = () => {
 
     return (
         <div className="resultsContainer">
-            <h2>Test lause</h2>
             {betWon ? 
                 <div>
                     <h1>Congratulations!</h1>
-                    <h2>You won</h2>
+                    <h2>You won your bet!</h2>
+                    <h2>Navigate to the results page to see the summary of all races</h2>
                 </div>
                 :
                 <div>
                     <h1>You lost your bet!</h1>
                     <h2>Unfortunately the horse you bet on wasn't the fastest</h2>
+                    <h2>Navigate to the results page to see the summary of all races</h2>
                 </div>
             }
             {scoresLoaded ? 
