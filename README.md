@@ -2,6 +2,9 @@
 
 Simple web application where you can create a horse race, add horses to it, bet on one horse and see if you won your bet.
 
+Unfortunately I underrated deploying this application to Heroku and didn't get everything working as I would have liked.
+Therefore there are instructions for a local setup below.
+
 ## Local setup instructions
 
   * Node.js installed
