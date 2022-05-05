@@ -24,7 +24,10 @@ Therefore there are instructions for a local setup below.
 4. Under 'Databases' create a new database named "horserace" and click on it to make it active.
 5. Open 'backend' folder in IntelliJ Idea.
 6. Click on 'Database' on the ribbon on the right side to connect the backend to the database.
-9. Click on '+' sign -> 'Data Source' -> 'PostgreSQL' and insert your database name, user and password. After that, test connection with the button in the left bottom.
-10. If needed, open file named 'application.properties' in 'Resources' folder and configure it according to your database.
-11. Start backend service by clicking on the green arrow (or Shift+F10) on the top ribbon.
-12. Start frontend by being in the 'frontend' folder from command line and type ```npm start```.
+7. Click on '+' sign -> 'Data Source' -> 'PostgreSQL' and insert your database name, user and password. After that, test connection with the button in the left bottom.   Default credentials are: 
+    * Username: postgres
+    * Password: (the one you set in the installation process)
+    * Database: horserace
+9. If needed, open file named 'application.properties' in 'Resources' folder and configure it according to your database.
+10. Start backend service by clicking on the green arrow (or Shift+F10) on the top ribbon.
+11. Start frontend by being in the 'frontend' folder from command line and type ```npm start```.
