@@ -1,3 +1,5 @@
+![Logo](frontend/public/HorseRace-logos_transparent.png)
+
 # Horserace
 
 Simple web application where you can create a horse race, add horses to it, bet on one horse and see if you won your bet.
